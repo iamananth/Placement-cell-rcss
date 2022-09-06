@@ -13,17 +13,15 @@
                         {{ session('status') }}
                     </div>
                     @endif
-
                     {{ Auth::user()->name }} {{ __(',You are logged in!') }}
                 </div>
             </div>
             <div style="margin-top: 20px;" class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Fill your details</h5>
-                            <p class="card-text">Fill out the form below with valid answers.</p>
-                            <a href="#" class="btn btn-primary">Fill out the forms</a>
-                        </div>
-                    </div>
+                <div class="card-body">
+                    <h5 class="card-title">Student Details</h5>
+                    <a href="{{ route('index') }}" class="btn btn-primary">Show all</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

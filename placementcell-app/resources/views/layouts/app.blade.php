@@ -22,7 +22,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
             
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                 <img class="logo" src="{{asset('images\rlogo.png')}}">
                     <span style="margin-left: 10px;">PLACEMENT & TRAINING CELL RCSS</span>
                 </a>

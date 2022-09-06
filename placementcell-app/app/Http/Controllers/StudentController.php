@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+ 
 
 class StudentController extends Controller
 {
@@ -13,8 +15,13 @@ class StudentController extends Controller
      */
     public function index()
     {
+        if (Auth::check()) {
         $student = Student::all();
         return view ('students.index')->with('students', $student);
+        }
+        else{
+            return view('auth.login');
+        }
     }
 
     /**
@@ -24,7 +31,13 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('students.create');
+        if (Auth::check()) {
+            return view('students.create');
+        }
+        else{
+            return view('auth.login');
+        }
+        
     }
 
     /**
@@ -35,9 +48,15 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
+        if (Auth::check()) {
+            $input = $request->all();
         Student::create($input);
         return redirect('student')->with('flash_message', 'Student Addedd!'); 
+        }
+        else{
+            return view('auth.login');
+        }
+        
     }
 
     /**
@@ -48,8 +67,13 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        $student = Student::find($id);
-        return view('students.show')->with('students', $student);
+        if (Auth::check()) {
+            $student = Student::find($id);
+            return view('students.show')->with('students', $student);
+        }
+        else{
+            return view('auth.login');
+        }
     }
 
     /**
@@ -60,8 +84,14 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        $student = Student::find($id);
-        return view('students.edit')->with('students', $student);
+        if (Auth::check()) {
+            $student = Student::find($id);
+            return view('students.edit')->with('students', $student);
+        }
+        else{
+            return view('auth.login');
+        }
+
     }
 
     /**
@@ -73,10 +103,16 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $student = Student::find($id);
-        $input = $request->all();
-        $student->update($input);
-        return redirect('student')->with('flash_message', 'student Updated!'); 
+        if (Auth::check()) {
+            $student = Student::find($id);
+            $input = $request->all();
+            $student->update($input);
+            return redirect('student')->with('flash_message', 'student Updated!'); 
+        }
+        else{
+            return view('auth.login');
+        }
+
     }
 
     /**
@@ -87,7 +123,13 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        Student::destroy($id);
-        return redirect('student')->with('flash_message', 'Student deleted!');  
+        if (Auth::check()) {
+            Student::destroy($id);
+            return redirect('student')->with('flash_message', 'Student deleted!');  
+        }
+        else{
+            return view('auth.login');
+        }
+
     }
 }
