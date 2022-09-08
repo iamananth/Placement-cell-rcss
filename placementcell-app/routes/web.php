@@ -23,7 +23,7 @@ Auth::routes();
 Route::group(['middleware' => 'revalidate'],function(){
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('utype');
 Route::resource("/student", StudentController::class);
 
 Route::get('/create', 'App\Http\Controllers\StudentController@create')->name('create');

@@ -17,10 +17,7 @@
                 </div>
             </div>
             <div style="margin-top: 20px;" class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Student Details</h5>
-                    <a href="{{ route('index') }}" class="btn btn-primary">Manage Students</a>
-                </div>
+                Welcome to user dashboard
             </div>
         </div>
     </div>
