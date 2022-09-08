@@ -30,5 +30,8 @@ Route::get('/index', 'App\Http\Controllers\StudentController@index')->name('inde
 Route::get('/edit', 'App\Http\Controllers\StudentController@edit')->name('edit');
 Route::get('/show', 'App\Http\Controllers\StudentController@show')->name('show');
 
+Route::get('/users', function () {
+    return view('users.login');
+});
 
 });
